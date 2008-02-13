@@ -192,7 +192,11 @@ class File_Cabinet
      *                              may contain wildcards.
      * @param string $to_directory Directory to expand to. Leave null to return 
      *                            file contents.
-     * @return string File contents if to_directory is null, null otherwise.
+     * @return array/string/null If to_directory is null, the return value will be
+     *                           the file contents in an array if $files was an
+     *                           array, else a concatenated string from the glob
+     *                           result.  If to_directory is not null the return
+     *                           value will be null. 
      * @access private
      */
     private function extractWithCabextract($files = null, $to_directory = null)
@@ -201,9 +205,9 @@ class File_Cabinet
 
         if (is_array($files)) {
             // one by one
-            $output = '';
+            $output = array();
             foreach ($files as $file) {
-                $output .= $this->extractWithCabextract($file, $to_directory);
+                $output[] = $this->extractWithCabextract($file, $to_directory);
             }
             if (is_null($to_directory)) {
                 return $output;
@@ -245,7 +249,11 @@ class File_Cabinet
      *                              may contain wildcards.
      * @param string $to_directory Directory to expand to. Leave null to return 
      *                            file contents.
-     * @return string File contents if to_directory is null, null otherwise.
+     * @return array/string/null If to_directory is null, the return value will be
+     *                           the file contents in an array if $files was an
+     *                           array, else a concatenated string from the glob
+     *                           result.  If to_directory is not null the return
+     *                           value will be null. 
      * @access private
      */
     private function extractWithExpand($files = null, $to_directory = null)
@@ -254,9 +262,9 @@ class File_Cabinet
 
         if (is_array($files)) {
             // one by one
-            $output = '';
+            $output = array();
             foreach ($files as $file) {
-                $output .= $this->extractWithExpand($file, $to_directory);
+                $output[] = $this->extractWithExpand($file, $to_directory);
             }
             if (is_null($to_directory)) {
                 return $output;
