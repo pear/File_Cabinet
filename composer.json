@@ -1,0 +1,28 @@
+{
+    "authors": [
+        {
+            "email": "shangxiao@php.net",
+            "name": "David Sanders",
+            "role": "Lead"
+        }
+    ],
+    "autoload": {
+        "classmap": [
+            "./"
+        ]
+    },
+    "description": "More info available on: http://pear.php.net/package/File_Cabinet",
+    "license": "LGPL",
+    "name": "pear/file_cabinet",
+    "support": {
+        "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=File_Cabinet",
+        "source": "https://github.com/pear/File_Cabinet"
+    },
+    "type": "library",
+    "require": {
+        "pear/pear_exception": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    }
+}
